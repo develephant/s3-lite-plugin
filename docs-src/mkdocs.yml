@@ -1,0 +1,17 @@
+site_name: S3 Lite Plugin
+pages:
+  - 'Introduction': 'index.md'
+  - 'S3 Lite API': 'api.md'
+  - 'Errors': 'errors.md'
+  - 'Constants': 'constants.md'
+  - 'Using Prefixes': 'prefixes.md'
+  - 'Troubleshooting': 'notes.md'
+  - 'Example': 'example.md'
+  - 'About': 'about.md'
+copyright: "&copy;2017 C. Byerley - develephant.com"
+theme: readthedocs
+site_url: https://develephant.github.io/amazon-s3-plugin
+site_dir: ../docs
+markdown_extensions:
+  - admonition
+  - codehilite

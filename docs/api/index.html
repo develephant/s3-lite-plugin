@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>S3 Lite API - S3 Lite Plugin</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "S3 Lite API";
+    var mkdocs_page_input_path = "api.md";
+    var mkdocs_page_url = "/api/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> S3 Lite Plugin</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">S3 Lite API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#setup">Setup</a></li>
+                
+                    <li><a class="toctree-l4" href="#new">new</a></li>
+                
+                    <li><a class="toctree-l4" href="#listbuckets">listBuckets</a></li>
+                
+                    <li><a class="toctree-l4" href="#listobjects">listObjects</a></li>
+                
+                    <li><a class="toctree-l4" href="#putobject">putObject</a></li>
+                
+                    <li><a class="toctree-l4" href="#getobject">getObject</a></li>
+                
+                    <li><a class="toctree-l4" href="#deleteobject">deleteObject</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../errors/">Errors</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../constants/">Constants</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../prefixes/">Using Prefixes</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../notes/">Troubleshooting</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../example/">Example</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">About</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">S3 Lite Plugin</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>S3 Lite API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="setup">Setup</h1>
+<p>To use the S3 Lite plugin, you will need to <strong>require</strong> it:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">s3</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">&quot;plugin.s3-lite&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<h2 id="new">new</h2>
+<p>Create and initialize a new S3 Lite instance.</p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">new</span><span class="p">(</span><span class="n">config_tbl</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Config Table Keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>The AWS key for the account.</td>
+<td><em>String</em></td>
+<td>nil</td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>secret</td>
+<td>The AWS secret key for the account.</td>
+<td><em>String</em></td>
+<td>nil</td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>region</td>
+<td>The region where the S3 bucket resides.</td>
+<td><em><a href="../constants/#regions">Const</a></em></td>
+<td>s3.US_EAST_1</td>
+<td><strong>N</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">new</span><span class="p">({</span>
+  <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;aws-key-1234&quot;</span><span class="p">,</span>
+  <span class="n">secret</span> <span class="o">=</span> <span class="s2">&quot;aws-secret-abcd&quot;</span><span class="p">,</span>
+  <span class="n">region</span> <span class="o">=</span> <span class="n">s3</span><span class="p">.</span><span class="n">EU_WEST_1</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The AWS user must have the proper S3 <a href="../notes/#user-permissions">permissions</a> set up through the AWS IAM console.</p>
+</div>
+<hr />
+<h2 id="listbuckets">listBuckets</h2>
+<p>List S3 buckets that are owned by the AWS user.</p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">listBuckets</span><span class="p">(</span><span class="n">listener</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listener</td>
+<td>An event listener to receive the results.</td>
+<td><em>Function</em></td>
+<td><strong>Y</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onListBuckets</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kd">local</span> <span class="n">buckets</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">buckets</span>
+    <span class="kr">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">buckets</span> <span class="kr">do</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">buckets</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">listBuckets</span><span class="p">(</span><span class="n">onListBuckets</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bucket creation and deletion must be managed through the AWS S3 web console.</p>
+</div>
+<hr />
+<h2 id="listobjects">listObjects</h2>
+<p>List objects contained in a bucket owned by the AWS user.</p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">listObjects</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">,</span> <span class="n">listener</span><span class="p">[,</span> <span class="n">params</span><span class="p">])</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_name</td>
+<td>The name of the bucket to list.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>listener</td>
+<td>An event listener to receive the results.</td>
+<td><em>Function</em></td>
+<td><strong>Y</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onListObjects</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kd">local</span> <span class="n">objects</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">objects</span>
+
+    <span class="kr">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">objects</span> <span class="kr">do</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">objects</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">key</span><span class="p">,</span> <span class="n">objects</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">listObjects</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="n">onListObjects</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>List Objects Parameters Keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maxKeys</td>
+<td>Sets the maximum number of keys returned.</td>
+<td><em>Number</em></td>
+<td>1000</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>Return keys that begin with the specified prefix. See <a href="../prefixes">Prefixes</a>.</td>
+<td><em>String</em></td>
+<td>nil</td>
+</tr>
+<tr>
+<td>startAfter</td>
+<td>Return key names after a specific object key. See <strong>Start-After</strong> below.</td>
+<td><em>String</em></td>
+<td>nil</td>
+</tr>
+<tr>
+<td>nextToken</td>
+<td>Token to get the next set of results, if any. See <strong>Paging</strong> below.</td>
+<td><em>String</em></td>
+<td>nil</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onListObjects</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kd">local</span> <span class="n">objects</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">objects</span>
+
+    <span class="kr">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">objects</span> <span class="kr">do</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">objects</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">key</span><span class="p">,</span> <span class="n">objects</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">maxKeys</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="p">}</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">listObjects</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="n">onListObjects</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Paging</strong></p>
+<p>If the bucket contains more than 1000 objects, or you have set the <strong>maxKeys</strong> to a number less than the total amount of objects in the bucket, you will receive a token in the response that you can use to get the next batch of results.</p>
+<p>To check if more results are available, check for the <strong>nextToken</strong> key in the response event:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">token</span>
+
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">onListObjects</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">)</span>
+  <span class="kr">else</span>
+
+    <span class="c1">--check for more results</span>
+    <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">nextToken</span> <span class="kr">then</span>
+      <span class="c1">--store the token however you&#39;d like</span>
+      <span class="n">token</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">nextToken</span>
+    <span class="kr">end</span>
+
+    <span class="c1">--print out the current object list results</span>
+    <span class="kr">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">evt</span><span class="p">.</span><span class="n">objects</span> <span class="kr">do</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">objects</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">key</span><span class="p">)</span>
+    <span class="kr">end</span>
+
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">maxKeys</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="p">}</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">listObjects</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="n">onListObjects</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You then call the <strong>listObjects</strong> method again, passing the token in the <strong>params</strong> to get the next batch:</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- listener function goes here</span>
+<span class="c1">-- ...</span>
+
+<span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">maxKeys</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="n">nextToken</span> <span class="o">=</span> <span class="n">token</span>
+<span class="p">}</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">listObjects</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="n">onListObjects</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Start-After</strong></p>
+<p>To list objects after a specific object key, add the object key to the <strong>startAfter</strong> params key:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">startAfter</span> <span class="o">=</span> <span class="s2">&quot;image001.png&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<h2 id="putobject">putObject</h2>
+<p>Upload a file to a bucket owned by the AWS user.</p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">putObject</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">bucket_name</span><span class="p">,</span> <span class="n">object_key</span><span class="p">,</span> <span class="n">listener</span><span class="p">[,</span> <span class="n">params</span><span class="p">])</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base_dir</td>
+<td>The system base directory.</td>
+<td><em><a href="../constants/#base-directories">Const</a></em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>file_path</td>
+<td>The source file path with extension.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>bucket_name</td>
+<td>The name of the destination bucket.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>object_key</td>
+<td>The destination object key with extension.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>listener</td>
+<td>An event listener to receive the results.</td>
+<td><em>Function</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>params</td>
+<td>Optional parameters for the put operation.</td>
+<td><em>Table</em></td>
+<td><strong>N</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onPutObject</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">progress</span> <span class="kr">then</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">progress</span><span class="p">)</span>
+    <span class="kr">else</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object upload complete&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">putObject</span><span class="p">(</span>
+  <span class="n">system</span><span class="p">.</span><span class="n">DocumentsDirectory</span><span class="p">,</span>
+  <span class="s2">&quot;image.png&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;my-image.png&quot;</span><span class="p">,</span>
+  <span class="n">onPutObject</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Put Object Parameters Keys</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acl</td>
+<td>A canned ACL code.</td>
+<td><em><a href="../constants/#canned-acl">Const</a></em></td>
+<td>s3.PRIVATE</td>
+</tr>
+<tr>
+<td>storage</td>
+<td>The storage class for the uploaded file.</td>
+<td><em><a href="../constants/#storage-class">Const</a></em></td>
+<td>s3.STANDARD</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onPutObject</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">progress</span> <span class="kr">then</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">progress</span><span class="p">)</span>
+    <span class="kr">else</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object upload complete&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">storage</span> <span class="o">=</span> <span class="n">s3</span><span class="p">.</span><span class="n">REDUCED_REDUNDANCY</span>
+<span class="p">}</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">putObject</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="n">onPutObject</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Upload Progress</strong></p>
+<p>By default the <strong>putObject</strong> listener event returns a <strong>progress</strong> key with the current upload progress as a decimal value between 0 and 1 that you can use to create progress bars, etc.</p>
+<p>If you don't care about the progress, you can write the listener function like so:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onPutObject</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kr">if</span> <span class="ow">not</span> <span class="n">evt</span><span class="p">.</span><span class="n">progress</span> <span class="kr">then</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object upload complete&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+
+
+<hr />
+<h2 id="getobject">getObject</h2>
+<p>Download a file from a bucket owned by the AWS user.</p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">getObject</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">,</span> <span class="n">object_key</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">dest_path</span><span class="p">,</span> <span class="n">listener</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_name</td>
+<td>The name of the source bucket.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>object_key</td>
+<td>The object key with extension.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>base_dir</td>
+<td>The system base directory.</td>
+<td><em><a href="../constants/#base-directories">Const</a></em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>dest_path</td>
+<td>The destination file path with extenstion.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>listener</td>
+<td>An event listener to receive the results.</td>
+<td><em>Function</em></td>
+<td><strong>Y</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onGetObject</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">progress</span> <span class="kr">then</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">progress</span><span class="p">)</span>
+    <span class="kr">else</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object download complete&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">getObject</span><span class="p">(</span>
+  <span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> 
+  <span class="s2">&quot;image.png&quot;</span><span class="p">,</span> 
+  <span class="n">system</span><span class="p">.</span><span class="n">DocumentsDirectory</span><span class="p">,</span>
+  <span class="s2">&quot;my-image.png&quot;</span><span class="p">,</span>
+  <span class="n">onGetObject</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Download Progress</strong></p>
+<p>By default the <strong>getObject</strong> listener event returns a <strong>progress</strong> key with the current download progress as a decimal value between 0 and 1 that you can use to create progress bars, etc.</p>
+<p>If you don't care about the progress, you can write the listener function like so:</p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onGetObject</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="kr">if</span> <span class="ow">not</span> <span class="n">evt</span><span class="p">.</span><span class="n">progress</span> <span class="kr">then</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object download complete&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+
+
+<hr />
+<h2 id="deleteobject">deleteObject</h2>
+<p>Delete a file from a bucket owned by the AWS user.</p>
+<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">deleteObject</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">,</span> <span class="n">object_key</span><span class="p">,</span> <span class="n">listener</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_name</td>
+<td>The name of the source bucket.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>object_key</td>
+<td>The object file key with extension.</td>
+<td><em>String</em></td>
+<td><strong>Y</strong></td>
+</tr>
+<tr>
+<td>listener</td>
+<td>An event listener to receive the results.</td>
+<td><em>Function</em></td>
+<td><strong>Y</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">local</span> <span class="kr">function</span> <span class="nf">onDeleteObject</span><span class="p">(</span> <span class="n">evt</span> <span class="p">)</span>
+  <span class="kr">if</span> <span class="n">evt</span><span class="p">.</span><span class="n">error</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">evt</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="n">evt</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+  <span class="kr">else</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object deleted&quot;</span><span class="p">)</span>
+  <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">s3</span><span class="p">:</span><span class="n">deleteObject</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="s2">&quot;image.png&quot;</span><span class="p">,</span> <span class="n">onDeleteObject</span><span class="p">)</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../errors/" class="btn btn-neutral float-right" title="Errors">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>&copy;2017 C. Byerley - develephant.com</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../errors/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
