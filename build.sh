@@ -2,7 +2,7 @@
 
 path=$(dirname "$0")
 
-LIBRARY_NAME="amazon-s3-lite"
+LIBRARY_NAME="s3-lite"
 LIBRARY_TYPE="plugin"
 
 # Verify arguments

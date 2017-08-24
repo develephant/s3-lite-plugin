@@ -1,0 +1,6 @@
+Create a new bucket on Amazon S3. Make sure the AWS user has the proper S3 permissions.
+
+Replace the AWS_KEY, AWS_SECRET, and S3_BUCKET_NAME placeholders in the main.lua with the proper values based on the AWS account.
+
+Run the project, tap the buttons (includes 2 files for each file operation in the assets directory).
+

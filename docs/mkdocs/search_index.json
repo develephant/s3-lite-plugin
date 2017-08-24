@@ -112,7 +112,7 @@
         },
         {
             "location": "/notes/",
-            "text": "User permissions\n\n\nThe AWS user must have the proper S3 permissons. In particular the following permissions are required for the S3 Lite plugin:\n\n\n\n\nDeleteObject\n\n\nGetObject\n\n\nListAllMyBuckets\n\n\nListBucket\n\n\nPutObject\n\n\nPutObjectAcl\n\n\n\n\nYou can add these when creating a IAM user, or as an S3 policy file.\n\n\n\n\nTip\n\n\nFor testing, when creating a IAM user, you can use the canned policy \nAmazonS3FullAccess\n. \n\n\n\n\n\n\nAndroid file restrictions\n\n\nWhen working with Android, make sure you understand the file restrictions. You can find more information in the Corona documenation by \nclicking here\n.\n\n\nIn the documentaion, there is a reference to a \ncopyFile\n method. As a convenience, this method is available in the S3 Lite plugin and can be accessed like so:\n\n\ns3\n.\nutils\n.\ncopyFile\n(\nsrcName\n,\n \nsrcPath\n,\n \ndstName\n,\n \ndstPath\n,\n \noverwrite\n)\n\n\n\n\n\n\n\n\nSlow responses\n\n\nDepending on network conditions, device, and file size there can be a number of seconds delay between issuing a command to S3, and the actually response.",
+            "text": "User permissions\n\n\nThe AWS user must have the proper S3 permissons. In particular the following permissions are required for the S3 Lite plugin:\n\n\n\n\nDeleteObject\n\n\nGetObject\n\n\nListAllMyBuckets\n\n\nListBucket\n\n\nPutObject\n\n\nPutObjectAcl\n\n\n\n\nYou can add these when creating a IAM user, or as an S3 policy file.\n\n\n\n\nTip\n\n\nFor testing, when creating a IAM user, you can use the canned policy \nAmazonS3FullAccess\n. \n\n\n\n\n\n\nAndroid file restrictions\n\n\nWhen working with Android, make sure you understand the file restrictions. You can find more information in the Corona documentation by \nclicking here\n.\n\n\nIn the documentaion, there is a reference to a \ncopyFile\n method. As a convenience, this method is available in the S3 Lite plugin and can be accessed like so:\n\n\ns3\n.\nutils\n.\ncopyFile\n(\nsrcName\n,\n \nsrcPath\n,\n \ndstName\n,\n \ndstPath\n,\n \noverwrite\n)\n\n\n\n\n\n\n\n\nSlow responses\n\n\nDepending on network conditions, device, and file size there can be a number of seconds delay between issuing a command to S3, and the actually response.",
             "title": "Troubleshooting"
         },
         {
@@ -122,7 +122,7 @@
         },
         {
             "location": "/notes/#android-file-restrictions",
-            "text": "When working with Android, make sure you understand the file restrictions. You can find more information in the Corona documenation by  clicking here .  In the documentaion, there is a reference to a  copyFile  method. As a convenience, this method is available in the S3 Lite plugin and can be accessed like so:  s3 . utils . copyFile ( srcName ,   srcPath ,   dstName ,   dstPath ,   overwrite )",
+            "text": "When working with Android, make sure you understand the file restrictions. You can find more information in the Corona documentation by  clicking here .  In the documentaion, there is a reference to a  copyFile  method. As a convenience, this method is available in the S3 Lite plugin and can be accessed like so:  s3 . utils . copyFile ( srcName ,   srcPath ,   dstName ,   dstPath ,   overwrite )",
             "title": "Android file restrictions"
         },
         {

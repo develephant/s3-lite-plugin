@@ -1,29 +1,25 @@
-
-local s3 = require("plugin.s3-lite")
-local auth = require("auth-config")
-
 local widget = require("widget")
 
+local s3 = require("plugin.s3-lite")
+
 s3:new({
-  key = auth.key,
-  secret = auth.secret
+  key = "AWS_KEY",
+  secret = "AWS_SECRET"
 })
+
+local bucket_name = "S3_BUCKET_NAME"
 
 --=============================================================================
 --# APP
 --=============================================================================
 
-local bucket_name = "coronium-vendor-files"
-
 local upload_idx = 1
 local download_idx = 1
+local delete_idx = 1
 
 local assets = {
-  {src="card.png.txt",file="card.png",dest="card.png"},
-  {src="bg.jpg.txt",file="bg.jpg",dest="bg.jpg"},
-  {src="card.png.txt",file="card2.png",dest="cards/card2.png"},
-  {src="bg.jpg.txt",file="bg2.jpg",dest="cards/bg.jpg"},
-  {src="ssk.zip",file="ssk.zip",dest="ssk.zip"}
+  {src="card.png.txt",file="card.png",dest="cards/card.png"},
+  {src="bg.jpg.txt",file="bg.jpg",dest="bg.jpg"}
 }
 
 local function uploadBtnCb( e )
@@ -41,32 +37,36 @@ local function uploadBtnCb( e )
     end
   end
 
-  --get file queue
+  --upload file queue
   local entry
   if upload_idx <= #assets then
-    print(upload_idx)
+
     entry = assets[upload_idx]
     upload_idx = upload_idx + 1
+
+    --android
+    s3.utils.copyFile(
+      "assets/"..entry.src, nil, 
+      entry.file, system.DocumentsDirectory, 
+      true)
+
+    local params = {
+      storage = s3.REDUCED_REDUNDANCY
+    }
+
+    s3:putObject(
+      system.DocumentsDirectory,
+      entry.file,
+      bucket_name,
+      entry.dest,
+      onUpload,
+      params
+    )
+
+  else
+    print("no more files to upload")
   end
 
-  --android
-  s3.utils.copyFile(
-    "assets/"..entry.src, nil, 
-    entry.file, system.DocumentsDirectory, 
-    true)
-
-  local params = {
-    storage = s3.REDUCED_REDUNDANCY
-  }
-
-  s3:putObject(
-    system.DocumentsDirectory,
-    entry.file,
-    bucket_name,
-    entry.dest,
-    onUpload,
-    params
-  )
 end
 
 local function downloadBtnCb( e )
@@ -87,22 +87,25 @@ local function downloadBtnCb( e )
   --get file queue
   local entry
   if download_idx <= #assets then
-    print(download_idx)
+
     entry = assets[download_idx]
     download_idx = download_idx + 1
+
+    s3:getObject(
+      bucket_name,
+      entry.dest,
+      system.DocumentsDirectory,
+      entry.file,
+      onDownload
+    )
+  else
+    print("no more files to download")
   end
 
-  s3:getObject(
-    bucket_name,
-    entry.dest,
-    system.DocumentsDirectory,
-    entry.file,
-    onDownload
-  )
 end
 
 local function deleteBtnCb( e )
-  print("delete")
+  print("deleting object")
 
   local function onDelete( evt )
     if evt.error then
@@ -112,7 +115,18 @@ local function deleteBtnCb( e )
     end
   end
 
-  s3:deleteObject(bucket_name, "card.png", onDelete)
+  --get file queue
+  local entry
+  if delete_idx <= #assets then
+
+    entry = assets[delete_idx]
+    delete_idx = delete_idx + 1
+
+    s3:deleteObject(bucket_name, entry.dest, onDelete)
+  else
+    print("no more files to delete")
+  end
+
 end
 
 local function listObjectsCb( e )

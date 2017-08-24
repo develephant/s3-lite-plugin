@@ -18,7 +18,7 @@ You can add these when creating a IAM user, or as an S3 policy file.
 
 # Android file restrictions
 
-When working with Android, make sure you understand the file restrictions. You can find more information in the Corona documenation by [clicking here](https://docs.coronalabs.com/guide/data/readWriteFiles/index.html#android-file-restrictions).
+When working with Android, make sure you understand the file restrictions. You can find more information in the Corona documentation by [clicking here](https://docs.coronalabs.com/guide/data/readWriteFiles/index.html#android-file-restrictions).
 
 In the documentaion, there is a reference to a __[copyFile](https://docs.coronalabs.com/guide/data/readWriteFiles/index.html#copying-files-to-subfolders)__ method. As a convenience, this method is available in the S3 Lite plugin and can be accessed like so:
 
