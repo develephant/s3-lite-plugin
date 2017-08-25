@@ -30,4 +30,4 @@ s3.utils.copyFile(srcName, srcPath, dstName, dstPath, overwrite)
 
 # Slow responses
 
-Depending on network conditions, device, and file size there can be a number of seconds delay between issuing a command to S3, and the actually response.
+Depending on network conditions, device, and file size there can be a number of seconds delay between issuing a command to S3, and the actual response.
