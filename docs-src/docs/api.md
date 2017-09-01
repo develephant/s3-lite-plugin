@@ -42,7 +42,7 @@ s3:new({
 
 ## listBuckets
 
-List S3 buckets that are owned by the AWS user.
+List S3 buckets that are owned by the AWS user. Returns a table array with bucket names. If no buckets exist, the array will be empty.
 
 ```lua
 s3:listBuckets(listener)
@@ -384,3 +384,6 @@ end
 
 s3:deleteObject("my-bucket", "image.png", onDeleteObject)
 ```
+
+!!! note
+    If the bucket object does not exist, this method will fail silently without an error.

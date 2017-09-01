@@ -24,13 +24,13 @@ settings =
 		},
 	},
 
-  --plugins =
-  --{
-  --  ["plugin.s3-lite"] =
-  --  {
-  --    publisherId = "com.develephant"
-  --  },
-  --},
+  plugins =
+  {
+    ["plugin.s3-lite"] =
+    {
+      publisherId = "com.develephant"
+    },
+  },
 
 	iphone =
 	{

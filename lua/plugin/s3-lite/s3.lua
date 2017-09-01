@@ -15,6 +15,8 @@ local s3 = {
   log = nil
 }
 
+s3.VERSION = "1.0.1"
+
 --#############################################################################
 --# Enums
 --#############################################################################
@@ -96,10 +98,18 @@ function s3:get_error_msg( xml_txt )
 end
 
 function s3:get_bucket_list( xml_txt )
+
   local xmlDoc = xml:ParseXmlText( xml_txt )
   if xmlDoc.ListAllMyBucketsResult then
     if xmlDoc.ListAllMyBucketsResult.Buckets.Bucket then
       local buckets = xmlDoc.ListAllMyBucketsResult.Buckets.Bucket
+
+      --single bucket
+      if #buckets == 0 then
+        return { buckets.Name:value() }
+      end
+
+      --multi buckets
       local bucket_list = {}
       for i=1, #buckets do
         table.insert(bucket_list, buckets[i].Name:value())

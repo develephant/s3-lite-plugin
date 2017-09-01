@@ -216,7 +216,7 @@
 </div>
 <hr />
 <h2 id="listbuckets">listBuckets</h2>
-<p>List S3 buckets that are owned by the AWS user.</p>
+<p>List S3 buckets that are owned by the AWS user. Returns a table array with bucket names. If no buckets exist, the array will be empty.</p>
 <div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="n">listBuckets</span><span class="p">(</span><span class="n">listener</span><span class="p">)</span>
 </pre></div>
 
@@ -697,6 +697,12 @@
 
 <span class="n">s3</span><span class="p">:</span><span class="n">deleteObject</span><span class="p">(</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="s2">&quot;image.png&quot;</span><span class="p">,</span> <span class="n">onDeleteObject</span><span class="p">)</span>
 </pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the bucket object does not exist, this method will fail silently without an error.</p>
+</div>
               
             </div>
           </div>
