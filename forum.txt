@@ -1,0 +1,20 @@
+Secure File Transfers with Amazon S3
+
+Hi,
+
+I've just released a new plugin that allows developers of Corona apps and games to securly transfer files using the Amazon Simple Storage Service ([url=https://aws.amazon.com/s3]Amazon S3[/url]).
+
+The [url=https://marketplace.coronalabs.com/plugin/s3-lite][b]S3 Lite[/b][/url] plugin is available in the [url=https://marketplace.coronalabs.com/plugin/s3-lite]Corona Marketplace[/url] with a new release special of [b]20% off through Sunday[/b].
+
+To learn more about the plugin api, visit the [url=https://develephant.github.io/s3-lite-plugin/]documentation site[/url].
+
+-dev
+
+amazon
+s3
+files
+upload
+download
+cloud
+secure
+storage

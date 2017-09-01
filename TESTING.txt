@@ -4,3 +4,7 @@ Replace the AWS_KEY, AWS_SECRET, and S3_BUCKET_NAME placeholders in the main.lua
 
 Run the project, tap the buttons (includes 2 files for each file operation in the assets directory).
 
+Note: After uploading objects, make sure to clear out your Corona "Documents" sandbox directory to confirm the download actions.
+
+
+
