@@ -132,7 +132,7 @@
         },
         {
             "location": "/demo/",
-            "text": "Click \nhere\n to download a Corona demo project.\n\n\nDemo Instructions\n\n\nCreate a new bucket on Amazon S3. Make sure the AWS user has the proper S3 permissions.\n\n\nReplace the \nAWS_KEY\n, \nAWS_SECRET\n, and \nS3_BUCKET_NAME\n placeholders in the main.lua with the proper values based on the AWS account.\n\n\nRun the project, tap the buttons (includes 2 files for each file operation in the assets directory).\n\n\nNote: After uploading objects, make sure to clear out your Corona \"Documents\" sandbox directory to confirm the download actions.",
+            "text": "Download\n\n\nClick \nhere\n to download a Corona demo project.\n\n\nDemo Instructions\n\n\nCreate a new bucket on Amazon S3. Make sure the AWS user has the proper S3 permissions.\n\n\nReplace the \nAWS_KEY\n, \nAWS_SECRET\n, and \nS3_BUCKET_NAME\n placeholders in the main.lua with the proper values based on the AWS account.\n\n\nRun the project, tap the buttons (includes 2 files for each file operation in the assets directory).\n\n\nNote: After uploading objects, make sure to clear out your Corona \"Documents\" sandbox directory to confirm the download actions.",
             "title": "Demo Project"
         },
         {
