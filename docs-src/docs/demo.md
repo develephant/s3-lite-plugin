@@ -1,0 +1,1 @@
+Click __[here](https://s3.amazonaws.com/develephant-plugins/s3-lite/s3-lite-demo.zip)__ to download a Corona demo project.

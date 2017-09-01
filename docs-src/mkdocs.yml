@@ -6,7 +6,7 @@ pages:
   - 'Constants': 'constants.md'
   - 'Using Prefixes': 'prefixes.md'
   - 'Troubleshooting': 'notes.md'
-  - 'Example': 'example.md'
+  - 'Demo Project': 'demo.md'
   - 'About': 'about.md'
 copyright: "&copy;2017 C. Byerley - develephant.com"
 theme: readthedocs
